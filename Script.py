@@ -6,7 +6,7 @@ def caminhar_pela_pasta(pasta):
     #essa função, obviamente, vai caminhar pela pasta e pelas subpastas
     janela2 = tk.Tk()
     janela2.title("Resultado da Pesquisa")
-    janela2.geometry("450x300")
+    janela2.geometry("650x300")
     
     scrollbar = tk.Scrollbar(janela2)
     scrollbar.pack(side="right", fill="y")
