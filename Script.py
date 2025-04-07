@@ -4,18 +4,27 @@ from tkinter import filedialog
 
 def caminhar_pela_pasta(pasta):
     #essa função, obviamente, vai caminhar pela pasta e pelas subpastas
+    janela2 = tk.Tk()
+    janela2.title("Resultado da Pesquisa")
+    janela2.geometry("450x300")
+    
+    scrollbar = tk.Scrollbar(janela2)
+    scrollbar.pack(side="right", fill="y")
+    
+    caixa_texto = tk.Text(janela2, yscrollcommand=scrollbar.set)
+    caixa_texto.pack(expand=True, fill="both")
+    
+    scrollbar.config(command=caixa_texto.yview)
     
     for raiz, subpastas, arquivos in os.walk(pasta):
-        print (f"Raiz: {raiz}")
-        if subpastas != None:
-            print (f"subpasta: {subpastas}")
-        else:
-            print ("Não há subpastas")
-        if arquivos != None:
-            print (f"Arquivos: {arquivos}")
-        else:
-            print ("Não há arquivos")
-        print ("-"*50)
+        caixa_texto.insert("end", f"Raiz: {raiz}\n")
+        caixa_texto.insert("end", f"Subpastas: {subpastas}\n")
+        caixa_texto.insert("end", f"Arquivos: {arquivos}\n\n")
+        caixa_texto.see("end")
+        janela2.update()
+        
+    caixa_texto.insert("end", "Varredura Concluída!\n")
+    
         
         
 def selecionar_root():
